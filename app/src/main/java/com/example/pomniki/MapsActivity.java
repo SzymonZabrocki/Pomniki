@@ -2,6 +2,7 @@ package com.example.pomniki;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -29,6 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String miasto;
     String rodzaj;
     String nazwa;
+    int i=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +67,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     LatLng loc = new LatLng(latitude,longitude);
                     mMap.addMarker(new MarkerOptions().position(loc).title(nazwa));
+                    i++;
 
                 }
+
+                Toast toast = Toast.makeText(getApplicationContext(), "Załadowano " + i + " miejsc/a", Toast.LENGTH_SHORT);
+                toast.show();
+
             }
 
             @Override
