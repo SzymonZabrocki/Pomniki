@@ -37,17 +37,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        //--MAP PART--
+//        ---MAP PART---
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        //--DATABASE PART--
+//        ---DATABASE PART---
         database = FirebaseDatabase.getInstance();
 
         //Getting Reference to Root Node
-        DatabaseReference number = database.getReference().child("pomniki");
+        number = database.getReference().child("pomniki");
 
         // Read from the database
         number.addValueEventListener(new ValueEventListener() {
@@ -65,8 +65,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     Log.i("onDataChange: ", miasto + ", " + nazwa + ", " + rodzaj + ", " + latitude + ", " + longitude);
 
+                    //Create marker using data from db
                     LatLng loc = new LatLng(latitude,longitude);
-                    mMap.addMarker(new MarkerOptions().position(loc).title(nazwa));
+                    mMap.addMarker(new MarkerOptions().position(loc).title(miasto + " - " + nazwa).snippet(rodzaj));
                     i++;
 
                 }
@@ -85,16 +86,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //Move camera to center of Poland
         LatLng center = new LatLng(52.065162,19.252522);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center,5));
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
