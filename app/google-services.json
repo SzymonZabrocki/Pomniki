@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "419309258416",
+    "firebase_url": "https://pomniki-4f506.firebaseio.com",
+    "project_id": "pomniki-4f506",
+    "storage_bucket": "pomniki-4f506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419309258416:android:a1d3275225ec40a64b5d75",
+        "android_client_info": {
+          "package_name": "com.example.pomniki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419309258416-1qo47c41edklh417pfee4iv0ioog9d9g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM-C0omJ5edwJSfkNXBfnxV5UJIUT9fhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419309258416-1qo47c41edklh417pfee4iv0ioog9d9g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
