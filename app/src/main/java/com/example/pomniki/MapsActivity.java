@@ -1,5 +1,6 @@
 package com.example.pomniki;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     String miasto;
     String rodzaj;
     String nazwa;
-    int i=0;
+    int length;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 //        ---DATABASE PART---
         database = FirebaseDatabase.getInstance();
-
         //Getting Reference to Root Node
         number = database.getReference().child("pomniki");
+
 
         // Read from the database
         number.addValueEventListener(new ValueEventListener() {
@@ -66,13 +67,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Log.i("onDataChange: ", miasto + ", " + nazwa + ", " + rodzaj + ", " + latitude + ", " + longitude);
 
                     //Create marker using data from db
-                    LatLng loc = new LatLng(latitude,longitude);
+                    LatLng loc = new LatLng(latitude, longitude);
                     mMap.addMarker(new MarkerOptions().position(loc).title(miasto + " - " + nazwa).snippet(rodzaj));
-                    i++;
-
                 }
 
-                Toast toast = Toast.makeText(getApplicationContext(), "Załadowano " + i + " miejsc/a", Toast.LENGTH_SHORT);
+                length = (int) dataSnapshot.getChildrenCount();
+                Log.i("size", String.valueOf(length));
+
+                Toast toast = Toast.makeText(getApplicationContext(), "Załadowano " + length + " miejsc/a", Toast.LENGTH_SHORT);
                 toast.show();
 
             }
@@ -91,7 +93,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         //Move camera to center of Poland
-        LatLng center = new LatLng(52.065162,19.252522);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center,5));
+        LatLng center = new LatLng(52.065162, 19.252522);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(center, 5));
+
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                Intent edit = new Intent(MapsActivity.this, AddMarkerDetails.class);
+                edit.putExtra("location", latLng);
+                edit.putExtra("length", length);
+                MapsActivity.this.startActivityForResult(edit, 1);
+            }
+        });
     }
+
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch(requestCode) {
+//            case (1) : {
+//                if (resultCode == Activity.RESULT_OK) {
+//                    MarkerOptions markerOptions = data.getParcelableExtra("marker");
+//                    mMap.addMarker(markerOptions);
+//                    break;
+//                }
+//                break;
+//            }
+//        }
+//    }
 }
