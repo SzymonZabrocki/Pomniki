@@ -1,5 +1,6 @@
 package com.example.pomniki;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,5 +57,10 @@ public class AddMarkerDetails extends AppCompatActivity {
 //        setResult(Activity.RESULT_OK, resultIntent);
 
         finish();
+    }
+
+    public void addPhoto(View view) {
+        Intent photo = new Intent(getBaseContext(), MainActivity.class);
+        startActivity(photo);
     }
 }
