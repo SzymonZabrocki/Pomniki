@@ -10,11 +10,12 @@
         android:id="@+id/createButton"
         android:layout_width="266dp"
         android:layout_height="93dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="16dp"
         android:onClick="addMarker"
         android:text="Add Marker"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -34,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="Description"
         android:textSize="24sp"
         android:textStyle="bold"
