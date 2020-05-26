@@ -34,11 +34,11 @@ Custom markers are stored in Firebase Storage, thanks to that every user will se
 </p>
 
 <p align="center">
-   <img src="screenshots/firebase.png" width="100%">
+   <img src="screenshots/firebase.png" width="70%">
 </p>
 
 <p align="center">
-   <img src="screenshots/database.jpg" width="100%">
+   <img src="screenshots/database.jpg" width="70%">
 </p>
     
 
