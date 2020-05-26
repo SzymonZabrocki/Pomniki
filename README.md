@@ -29,3 +29,8 @@ Custom markers are stored in Firebase Storage, thanks to that every user will se
   <img src="screenshots/photo.png" width="35%">
 </p>
 
+<p align="center">
+   <img src="screenshots/CustomMarker.png" width="35%">
+</p>
+    
+
